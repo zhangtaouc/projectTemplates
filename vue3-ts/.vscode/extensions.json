@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    // ESLint 扩展：用于 JavaScript/TypeScript 代码的静态分析，检测代码问题并规范风格
+    "dbaeumer.vscode-eslint",
+    // EditorConfig 扩展：通过 .editorconfig 文件统一不同编辑器/IDE 的代码风格配置
+    "EditorConfig.EditorConfig",
+    // Prettier 扩展：代码格式化工具，统一代码缩进、分号、引号等格式
+    "esbenp.prettier-vscode",
+    // Volar 扩展：Vue 3 官方支持扩展，提供 Vue SFC（单文件组件）的语法高亮、类型检查等功能
+    "Vue.volar",
+    // Biome 扩展：集成格式化、lint、语法检查等功能的现代代码工具链，提升代码质量
+    "biomejs.biome"
+  ]
+}

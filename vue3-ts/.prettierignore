@@ -1,0 +1,11 @@
+package.json
+pnpm-workspace.yaml
+
+node_modules
+.vitePress/cache
+.vitePress/dist
+
+packages/wash-ui/dist
+packages/wash-icon/dist
+packages/wash-auto-import-resolver/dist
+pnpm-lock.yaml

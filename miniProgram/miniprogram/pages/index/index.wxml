@@ -1,0 +1,120 @@
+<view class="container">
+	<!-- 名字 -->
+	<view wx:if="{{name}}" class="her-name" bind:tap="resetInfo">
+		<image class="icon" src="../../assets/images/home/icon.svg"  />
+		<view >hi，{{name}}~</view>
+	</view>
+
+	<!-- 起名字 -->
+	<view class="input-name" wx:if="{{!name}}">
+		<van-field
+			model:value="{{ nameValue }}"
+			center
+			input-align="center"
+			placeholder="给自己起个名字吧~"
+			border="{{ true }}"
+			use-button-slot
+		>
+			<van-button plain slot="button" size="small" type="primary" bind:click="getName" color="#2283e2">
+				get
+			</van-button>
+		</van-field>
+	</view>
+
+	<!-- 开始旅程 -->
+	<van-transition show="{{name}}" duration="{{1200}}" name="fade">
+		<view wx:if="{{name && messageStep ===0 }}" class="begin" bind:tap="startChat"
+			>Start Journey<van-icon name="share-o" />
+		</view>
+	</van-transition>
+	<view class="app-desc" wx:if="{{name && messageStep ===0 }}">this miniprogram is just for you ~</view>
+
+	<!-- 展示信息 -->
+	<view class="message-box" wx:if="{{ isShowMessage }}">
+		<view class="message"> {{showMessage}} </view>
+		<view class="control-box" wx:if="{{messageStep >=0 && messageStep < messages.length }}">
+			<image
+				src="../../assets/images/home/back-icon.svg"
+				class="control-btn"
+				bind:tap="messageControl"
+				data-key="reduce"
+			/>
+			<image
+				src="../../assets/images/home/start-icon.svg"
+				class="control-btn"
+				bind:tap="messageControl"
+				data-key="add"
+			/>
+		</view>
+		<view class="control-box" wx:else>
+			<image src="../../assets/images/home/back-icon.svg" class="control-btn" bind:tap="reset" />
+			<image
+				src="../../assets/images/home/start-icon.svg"
+				class="control-btn"
+				bind:tap="messageControl"
+				data-key="add"
+			/>
+		</view>
+	</view>
+
+	<!-- 圆圈 -->
+	<view wx:if="{{isShowCircle}}" class="circle-content">
+		<van-divider contentPosition="center" borderColor="#f5f5f5">something for you</van-divider>
+		<view class="circle-box">
+			<view class="circle" wx:for="{{ciecles}}" bind:tap="clickCircle" wx:key="id" data-id="{{item.id}}">
+				<image src="{{item.url}}" mode="widthFix" />
+				<view class="title">{{item.title}}</view>
+				<view class="sub-title">{{item.subTitle}}</view>
+			</view>
+		</view>
+		<van-divider contentPosition="center" borderColor="#f5f5f5">you can click the circle ~</van-divider>
+		<view class="control-box">
+			<image src="../../assets/images/home/back-icon.svg" class="control-btn" bind:tap="reset" />
+			<image src="../../assets/images/home/start-icon.svg" class="control-btn" bind:tap="showSomeWord" />
+		</view>
+	</view>
+
+	<!-- 留言 -->
+	<view class="some-word-container" wx:if="{{isShowSomeWord}}">
+		<view class="word" wx:for="{{ourWords}}" wx:key="index">{{item}}</view>
+	</view>
+	<view class="input-box" wx:if="{{isShowSomeWord}}">
+		<van-field
+			model:value="{{ sensValue }}"
+			center
+			input-align="center"
+			placeholder="send your feeling ~"
+			:border="{{ true }}"
+			use-button-slot
+		>
+			<van-button plain slot="button" size="small" type="primary" bind:click="sendLeaveWords">send</van-button>
+		</van-field>
+	</view>
+	<view class="control-box word-back" wx:if="{{isShowSomeWord}}">
+		<image src="../../assets/images/home/back-icon.svg" class="control-btn" bind:tap="reset" />
+	</view>
+</view>
+
+<van-overlay show="{{ isShowOverlay }}" bind:click="hideOverlay">
+	<view class="overlay-wrapper">
+		<view class="content" catch:tap="hideOverlay">
+			<view class="txt">{{overlayMessage}}</view>
+		</view>
+	</view>
+</van-overlay>
+
+<!-- 弹窗 -->
+<van-dialog
+	id="van-dialog"
+	show="{{dialogMessage.isShowDialog && isShowDialog}}"
+	show-cancel-button="{{true}}"
+	confirm-button-color="#2283e2"
+	title="{{dialogMessage.title}}"
+	message="{{dialogMessage.message}}"
+	bind:confirm="dialogConfirm"
+	bind:cancel="dialogCancel"
+	confirm-button-text="{{dialogMessage.confirmTxt}}"
+	cancel-button-text="{{dialogMessage.cancelTxt}}"
+	class="ooo"
+>
+</van-dialog>

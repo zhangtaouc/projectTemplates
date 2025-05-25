@@ -1,0 +1,6 @@
+<view class="container">
+  <button class="custom-button">
+    <text class="button-icon">􀊄</text>
+    <text class="button-text">Play</text>
+  </button>
+</view>

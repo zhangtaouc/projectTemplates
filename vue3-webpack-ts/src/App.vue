@@ -6,5 +6,8 @@
 import { ref } from 'vue'
 const title = ref('webpack5-vue3-ts')
 </script>
-<style scoped>
+<style scoped lang="less">
+h2 {
+  color: red;
+}
 </style>

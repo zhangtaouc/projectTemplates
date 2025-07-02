@@ -2,7 +2,7 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const webpack = require('webpack')
 module.exports = {
   entry: path.join(__dirname, '../src/index.ts'), // 入口文件
   output: {
@@ -18,24 +18,38 @@ module.exports = {
       	use: 'vue-loader', // 用vue-loader去解析vue文件
       },
       {
-        test: /\.ts$/, // 匹配.ts文件
+        test: /\.ts$/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                "@babel/preset-typescript",
-                {
-                  allExtensions: true, //支持所有文件扩展名(重要)
-                },
-              ],
-            ]
-          }
         }
-      }
+      },
+      {
+        test: /\.css$/, //匹配 css 文件
+        use: ['style-loader','css-loader']
+      },
+      {
+        test: /.(css|less)$/, //匹配 css和less 文件
+        use: ['style-loader','css-loader', 'less-loader']
+      },
+      {
+        test:/.(png|jpg|jpeg|gif|svg)$/, // 匹配图片文件
+        type: "asset", // type选择asset
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024, // 小于10kb转base64位
+          }
+        },
+        generator:{ 
+          filename:'static/images/[name][ext]', // 文件输出目录和命名
+        },
+      },
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'), // 模板取定义root节点的模板
@@ -46,3 +60,6 @@ module.exports = {
     extensions:['.vue', '.ts', '.js', '.json']
   }
 }
+
+console.log('NODE_ENV', process.env.NODE_ENV)
+console.log('BASE_ENV', process.env.BASE_ENV)

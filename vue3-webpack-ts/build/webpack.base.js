@@ -14,22 +14,33 @@ module.exports = {
   module: {
     rules: [
       {
+        include: [path.resolve(__dirname, '../src')], // 只对项目src文件的vue进行loader解析
       	test: /\.vue$/, // 匹配.vue文件
-      	use: 'vue-loader', // 用vue-loader去解析vue文件
+      	use: ['thread-loader', 'vue-loader'], // 用vue-loader去解析vue文件
       },
       {
+        include: [path.resolve(__dirname, '../src')], // 只对项目src文件的vue进行loader解析
         test: /\.ts$/,
-        use: {
-          loader: 'babel-loader',
-        }
+        use: ['thread-loader', 'vue-loader']
       },
       {
-        test: /\.css$/, //匹配 css 文件
-        use: ['style-loader','css-loader']
+        test: /\.css$/, //匹配所有的 css 文件
+        include: [path.resolve(__dirname, '../src')],
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader'
+        ]
       },
       {
-        test: /.(css|less)$/, //匹配 css和less 文件
-        use: ['style-loader','css-loader', 'less-loader']
+        test: /\.less$/, //匹配所有的 less 文件
+        include: [path.resolve(__dirname, '../src')],
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'less-loader'
+        ]
       },
       {
         test:/.(png|jpg|jpeg|gif|svg)$/, // 匹配图片文件
@@ -58,6 +69,9 @@ module.exports = {
   ],
   resolve: {
     extensions:['.vue', '.ts', '.js', '.json']
+  },
+  cache: {
+     type: 'filesystem', // 使用文件缓存
   }
 }
 

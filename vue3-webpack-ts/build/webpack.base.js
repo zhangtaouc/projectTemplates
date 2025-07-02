@@ -21,7 +21,7 @@ module.exports = {
       {
         include: [path.resolve(__dirname, '../src')], // 只对项目src文件的vue进行loader解析
         test: /\.ts$/,
-        use: ['thread-loader', 'vue-loader']
+        use: ['thread-loader', 'babel-loader']
       },
       {
         test: /\.css$/, //匹配所有的 css 文件

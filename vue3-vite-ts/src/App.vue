@@ -1,5 +1,12 @@
 <script setup lang="ts">
   import HelloWorld from './components/HelloWorld.vue'
+  import { sendPV, track } from './utils/track'
+  sendPV()
+  track('rxf_pc_0001')
+  track('rxf_pc_0002')
+  setTimeout(() => {
+    console.log('111', window)
+  }, 1000)
 </script>
 
 <template>

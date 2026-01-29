@@ -1,0 +1,31 @@
+{
+  "files": [],
+  "references": [
+    // eslint-disable-next-line no-console
+    { "path": "./tsconfig.app.json" },
+    // eslint-disable-next-line no-console
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "bundler", // Vite项目推荐使用bundler
+    "allowJs": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"], // 更现代的lib配置
+    "target": "ES2020", // 推荐使用ES2020作为目标
+    "module": "ESNext", // 保持ESNext以支持最新模块特性
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "types": ["vitest/globals", "vite/client"],
+    "outDir": "dist", // 标准的输出目录
+    "paths": {
+      "@/*": ["./src/*"],
+      "@utils": ["./src/utils"],
+      "@api": ["./src/api"],
+      "@components": ["./src/components"],
+      "@store/*": ["./src/store/*"]
+    }
+  }
+}

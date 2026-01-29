@@ -1,0 +1,473 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+
+.main-page {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+
+  .login-container {
+    overflow: hidden;
+    box-sizing: border-box;
+
+    .login-header {
+      color: var(--black-color);
+      text-align: center;
+      position: relative;
+
+      .login-title {
+        font-weight: bold;
+      }
+
+      .login-subtitle {
+        font-size: 16px;
+        opacity: 0.9;
+        margin-top: 10px;
+      }
+    }
+
+    .login-form {
+      .form-group {
+        position: relative;
+
+        .input-with-icon {
+          position: relative;
+
+          .input-icon {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+          }
+
+          .toggle-password-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+
+          .verification-code-img {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+          }
+
+          .form-control {
+            width: 100%;
+            padding: 14px 48px 14px 48px;
+            border: 2px solid var(--common-border-color);
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+
+            &::placeholder {
+              font-size: 14px;
+              opacity: 0.7;
+            }
+
+            &::-webkit-input-placeholder {
+              font-size: 14px;
+              opacity: 0.7;
+            }
+
+            &::-moz-placeholder {
+              font-size: 14px;
+              opacity: 0.7;
+            }
+
+            &:-ms-input-placeholder {
+              font-size: 14px;
+              opacity: 0.7;
+            }
+
+            &:-moz-placeholder {
+              font-size: 14px;
+              opacity: 0.7;
+            }
+
+            &:hover {
+              outline: none;
+              border-color: var(--main-color);
+              box-shadow:
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 1px 2px rgba(0, 0, 0, 0.03);
+              background: var(--white-color);
+            }
+
+            &:focus {
+              outline: none;
+              border-color: var(--main-color);
+              box-shadow:
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 1px 2px rgba(0, 0, 0, 0.03);
+              background: var(--white-color);
+            }
+          }
+        }
+      }
+
+      .btn-login {
+        width: 100%;
+        padding: 14px;
+        background: var(--main-color);
+        color: var(--white-color);
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background: #c4a22a;
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        &:focus {
+          outline: none;
+          border: 2px solid #b8941f;
+          box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+
+        // 加载状态样式
+        &.loading {
+          background: #d4af37;
+          cursor: not-allowed;
+          opacity: 0.8;
+
+          &:hover {
+            background: #d4af37;
+            transform: none;
+            box-shadow: none;
+          }
+
+          &:active {
+            transform: none;
+          }
+        }
+
+        // 加载动画
+        .loading-spinner {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .spinner {
+          width: 16px;
+          height: 16px;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          border-top: 2px solid var(--white-color);
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+
+        .loading-text {
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 24px 20px;
+      color: var(--black-color-40);
+
+      .footer-content {
+        max-width: 400px;
+        margin: 0 auto;
+
+        .copyright {
+          font-size: 13px;
+          font-weight: 500;
+          margin: 0 0 8px 0;
+          color: var(--black-color-30);
+        }
+
+        .icp-info {
+          font-size: 12px;
+          margin: 0;
+          color: var(--black-color-30);
+
+          a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: var(--black-color-60);
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 1. 手机端 (≤767px) 所有手机(小屏/大屏/折叠屏竖屏) 专属判断
+@media screen and (max-width: 767px) {
+  .login-container {
+    position: relative;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    padding: 40px 16px 0;
+    display: block;
+
+    .login-header {
+      padding: 0 16px 30px;
+
+      .logo-container {
+        padding-bottom: 12px;
+
+        img {
+          width: 66px;
+          height: 66px;
+        }
+      }
+    }
+
+    .login-form {
+      padding: 16px 0 0;
+
+      .form-group {
+        margin-bottom: 25px;
+
+        .input-with-icon {
+          .input-icon {
+            width: 14px;
+            height: 14px;
+          }
+
+          .toggle-password-icon {
+            width: 16px;
+            height: 16px;
+          }
+
+          .verification-code-img {
+            width: 80px;
+            height: 35px;
+          }
+        }
+      }
+    }
+
+    .login-title {
+      font-size: 18px;
+    }
+
+    .form-control {
+      padding: 16px 16px 16px 44px;
+      font-size: 16px;
+    }
+
+    .btn-login {
+      padding: 12px;
+      font-size: 17px;
+      margin-top: 32px;
+    }
+
+    .footer {
+      margin-top: 32px;
+    }
+  }
+}
+
+// 2. 平板端 (768px ~ 1199px) iPad全系/安卓平板(横竖屏通用适配)
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .main-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../../assets/login/login-bg-1.png') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .login-container {
+    position: relative;
+    background: var(--white-color);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    width: 420px;
+    border-radius: 16px;
+    backdrop-filter: blur(11px);
+
+    .login-header {
+      padding: 25px 15px;
+
+      .logo-container {
+        padding-bottom: 12px;
+
+        img {
+          width: 72px;
+          height: 72px;
+        }
+      }
+    }
+
+    .login-title {
+      font-size: 20px;
+    }
+
+    .login-form {
+      padding: 25px 20px;
+
+      .form-group {
+        margin-bottom: 25px;
+
+        .input-with-icon {
+          .input-icon {
+            width: 18px;
+            height: 18px;
+          }
+
+          .toggle-password-icon {
+            width: 20px;
+            height: 20px;
+          }
+
+          .verification-code-img {
+            width: 100px;
+            height: 40px;
+          }
+        }
+      }
+    }
+
+    .form-control {
+      padding: 12px 12px 12px 45px;
+      font-size: 16px;
+    }
+
+    .btn-login {
+      padding: 12px;
+      font-size: 17px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--common-border-color);
+    }
+  }
+}
+
+// 3. PC端 (1200px ~ 1919px) 笔记本/21.5/23.8寸台式显示器/常规办公电脑
+@media screen and (min-width: 1200px) {
+  .main-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
+    background: url('../../assets/login/login-bg-1.png') no-repeat center center
+      fixed;
+    background-size: 100% 100%;
+  }
+
+  .login-container {
+    position: absolute;
+    right: 120px;
+    background: var(--white-color);
+    border-radius: 16px;
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    width: 440px;
+    backdrop-filter: blur(11px);
+
+    .login-header {
+      padding: 32px 16px 48px;
+
+      .logo-container {
+        padding-bottom: 16px;
+
+        img {
+          width: 72px;
+          height: 72px;
+        }
+      }
+    }
+
+    .login-title {
+      font-size: 24px;
+    }
+
+    .login-form {
+      padding: 0 32px;
+
+      .form-group {
+        margin-bottom: 25px;
+
+        .input-with-icon {
+          .input-icon {
+            width: 18px;
+            height: 18px;
+          }
+
+          .toggle-password-icon {
+            width: 20px;
+            height: 20px;
+          }
+
+          .verification-code-img {
+            width: 100px;
+            height: 40px;
+          }
+        }
+      }
+    }
+
+    .footer {
+      border-top: 1px solid var(--common-border-color);
+      margin-top: 32px;
+    }
+
+    &:hover {
+      transform: scale(1.07);
+    }
+  }
+}
+
+// 4. 大屏端 (≥1920px) 27寸+/2K/4K显示器/带鱼屏/设计专用大屏
+@media screen and (min-width: 1920px) {
+  .login-container {
+    width: 480px;
+    right: 150px;
+  }
+}

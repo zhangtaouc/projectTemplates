@@ -3,8 +3,12 @@
     <!-- <div v-if="device === 'mobile' && sidebar.opened" class="drawer-bg" @click="handleClickOutside" /> -->
     <Sidebar class="sidebar-container" />
     <div
-      :class="{ hasTagsView: true, sidebarHide: false }"
-      class="main-container"
+      :class="{
+        hasTagsView: true,
+        sidebarHide: false,
+        'main-container': !store.isCollapse,
+        'main-container-collapse': store.isCollapse
+      }"
     >
       <div :class="{ 'fixed-header': false }">
         <navbar @set-layout="setLayout" />
@@ -35,14 +39,26 @@
 
 <style lang="less" scoped>
   .app-wrapper {
-    // @include clearfix;
     position: relative;
     height: 100%;
     width: 100%;
-
+    display: flex;
+    box-sizing: border-box;
     &.mobile.openSidebar {
       position: fixed;
       top: 0;
+    }
+    .main-container {
+      position: relative;
+      min-height: 100%;
+      transition: margin-left 0.28s;
+      margin-left: var(--base-sidebar-width);
+    }
+    .main-container-collapse {
+      position: relative;
+      min-height: 100%;
+      transition: margin-left 0.28s;
+      margin-left: var(--base-sidebar-width-collapse);
     }
   }
 

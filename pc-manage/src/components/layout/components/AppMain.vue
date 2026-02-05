@@ -40,18 +40,9 @@
   .app-main {
     height: calc(100vh - 90px - 30px);
     width: 100%;
-    padding: 0 48px;
     position: relative;
-    .inner {
-      width: 100%;
-      box-sizing: border-box;
-      height: 100%;
-      overflow: overlay;
-      @include scrollbar;
-    }
-    .innerOver {
-      @include scrollbar-hidden;
-    }
+    background-color: #b6a9a9;
+    box-sizing: border-box;
   }
 
   .fixed-header + .app-main {

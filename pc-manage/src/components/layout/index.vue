@@ -1,6 +1,11 @@
 <template>
   <div :class="classObj" class="app-wrapper">
-    <!-- <div v-if="device === 'mobile' && sidebar.opened" class="drawer-bg" @click="handleClickOutside" /> -->
+    <div
+      v-if="deviceType === 'mobile' && !isCollapse"
+      class="drawer-bg"
+      @click="handleClickOutside"
+    />
+    {{ isCollapse }}
     <Sidebar class="sidebar-container" />
     <div
       :class="{
@@ -24,16 +29,22 @@
   import { computed } from 'vue'
   import { AppMain, Navbar, Sidebar } from './components'
   import { useStore } from '@/store'
+  import { storeToRefs } from 'pinia'
   const store = useStore()
+  const { deviceType, isCollapse } = storeToRefs(store)
   const classObj = computed(() => ({
-    hideSidebar: store.isCollapse,
-    openSidebar: !store.isCollapse,
+    hideSidebar: isCollapse.value,
+    openSidebar: !isCollapse.value,
     withoutAnimation: false,
-    mobile: false
+    mobile: deviceType.value !== 'pc'
   }))
 
   function setLayout() {
     console.log('.setLayout')
+  }
+
+  function handleClickOutside() {
+    store.isCollapse = true
   }
 </script>
 

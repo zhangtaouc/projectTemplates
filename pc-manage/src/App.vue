@@ -6,9 +6,10 @@
 </template>
 <script setup lang="ts">
   import ProgressBar from '@/components/progressBar/ProgressBar.vue'
-  import { ref } from 'vue'
+  import { ref, watchEffect } from 'vue'
   import { useRouter } from 'vue-router'
   import { useStore } from './store'
+  import { useWindowSize } from '@vueuse/core'
 
   const store = useStore()
   store.isSHowVisitBtn = localStorage.getItem('isSHowVisitBtn') === 'true'
@@ -19,6 +20,11 @@
       progressBar.value.simulatePageLoad()
     }
     next()
+  })
+  // 监听窗口变化
+  watchEffect(() => {
+    const { width } = useWindowSize()
+    store.setDeviceType(width.value)
   })
 </script>
 <style lang="less">

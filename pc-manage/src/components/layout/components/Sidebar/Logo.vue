@@ -11,7 +11,7 @@
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
         <img src="@/assets/images/logo.svg" class="sidebar-logo" />
-        <div class="sidebar-title">主动移动授信管理系统</div>
+        <div class="sidebar-title">弓长水寿科技</div>
       </router-link>
     </transition>
   </div>

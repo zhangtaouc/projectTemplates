@@ -1,18 +1,18 @@
 <template>
   <div :class="classObj" class="app-wrapper">
     <div
-      v-if="deviceType === 'mobile' && !isCollapse"
+      v-if="deviceType !== 'pc' && isCollapse"
       class="drawer-bg"
       @click="handleClickOutside"
     />
-    {{ isCollapse }}
-    <Sidebar class="sidebar-container" />
+    <Sidebar />
     <div
       :class="{
         hasTagsView: true,
         sidebarHide: false,
-        'main-container': !store.isCollapse,
-        'main-container-collapse': store.isCollapse
+        'main-container': !isCollapse,
+        'main-container-collapse': isCollapse,
+        'mobeil-container': deviceType !== 'pc'
       }"
     >
       <div :class="{ 'fixed-header': false }">
@@ -44,7 +44,7 @@
   }
 
   function handleClickOutside() {
-    store.isCollapse = true
+    store.isCollapse = false
   }
 </script>
 
@@ -69,6 +69,9 @@
       min-height: 100%;
       transition: margin-left 0.28s;
       margin-left: var(--base-sidebar-width-collapse);
+    }
+    .mobeil-container {
+      margin-left: 0px;
     }
   }
 

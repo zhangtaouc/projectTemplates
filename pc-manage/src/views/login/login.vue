@@ -6,7 +6,7 @@
           <img src="../../assets/images/logo.svg" alt="logo" />
         </div>
         <div class="login-title">欢迎登录农信社昆明市联社！</div>
-        <p class="login-subtitle">主动移动授信管理系统</p>
+        <p class="login-subtitle">弓长水寿科技</p>
       </div>
 
       <form class="login-form">

@@ -1,6 +1,9 @@
 <template>
   <div
-    :class="{ 'has-logo': showLogo }"
+    :class="{
+      'has-logo': showLogo,
+      'mobile-uncollapse': !isCollapse && deviceType !== 'pc'
+    }"
     class="sidebar-container"
     :style="{ backgroundColor: 'rgb(245, 246, 250)' }"
   >
@@ -33,7 +36,9 @@
   import Logo from './Logo.vue'
   import SidebarItem from './SidebarItem.vue'
   import { useStore } from '@/store'
+  import { storeToRefs } from 'pinia'
   const store = useStore()
+  const { isCollapse, deviceType } = storeToRefs(store)
   const xRoute = useRoute()
 
   const sidebarRouters = computed(() => [
@@ -71,7 +76,6 @@
     }
   ])
   const showLogo = computed(() => true)
-  const isCollapse = computed(() => store.isCollapse)
 
   const activeMenu = computed(() => {
     const { meta, path } = xRoute
@@ -84,13 +88,6 @@
 </script>
 <style lang="less" scoped>
   #app {
-    .main-container {
-      min-height: 100%;
-      transition: margin-left 0.28s;
-      margin-left: var(--base-sidebar-width);
-      position: relative;
-    }
-
     .sidebarHide {
       margin-left: 0 !important;
     }
@@ -212,14 +209,14 @@
         }
       }
     }
+    .mobile-uncollapse {
+      transition-duration: 0.3s;
+      transform: translate3d(var(--base-sidebar-width-hidden), 0, 0);
+    }
 
     .hideSidebar {
       .sidebar-container {
         width: 54px !important;
-      }
-
-      .main-container {
-        margin-left: 54px;
       }
 
       .sub-menu-title-noDropdown {
@@ -278,10 +275,6 @@
 
     // mobile responsive
     .mobile {
-      .main-container {
-        margin-left: 0px;
-      }
-
       .sidebar-container {
         transition: transform 0.28s;
         width: var(--base-sidebar-width) !important;
@@ -297,7 +290,6 @@
     }
 
     .withoutAnimation {
-      .main-container,
       .sidebar-container {
         transition: none;
       }

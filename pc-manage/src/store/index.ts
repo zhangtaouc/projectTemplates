@@ -26,7 +26,7 @@ export const useStore = defineStore('common', () => {
       path: '/'
     },
     {
-      path: '',
+      path: '/',
       icon: 'miniprogram-icon',
       meta: {
         title: '用户管理'
@@ -51,7 +51,7 @@ export const useStore = defineStore('common', () => {
       meta: {
         title: '任务管理'
       },
-      path: '/404'
+      path: '/visitPageq'
     }
   ])
 

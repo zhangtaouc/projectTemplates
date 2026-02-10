@@ -2,8 +2,7 @@
   <div class="navbar">
     <hamburger
       id="hamburger-container"
-      :is-active="true"
-      class="hamburger-container"
+      :is-collapse="useStore().isCollapse"
       @toggle-click="toggleSideBar"
     />
     <breadcrumb
@@ -69,24 +68,10 @@
 
 <style lang="less" scoped>
   .navbar {
-    height: 80px;
+    height: var(--navbar-height);
     overflow: hidden;
     position: relative;
-    background: #fafafa;
-    .hamburger-container {
-      display: flex !important;
-      align-items: center !important;
-      line-height: 46px;
-      height: 100%;
-      float: left;
-      cursor: pointer;
-      transition: background 0.3s;
-      -webkit-tap-highlight-color: transparent;
-
-      &:hover {
-        background: rgba(0, 0, 0, 0.025);
-      }
-    }
+    background: var(--white-color);
 
     .breadcrumb-container {
       height: 100%;

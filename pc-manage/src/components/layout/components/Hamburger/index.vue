@@ -1,8 +1,8 @@
 <template>
-  <div style="padding: 0 15px" @click="toggleClick">
+  <div class="hamburger-container" @click="toggleClick">
     <svg
-      :class="{ 'is-active': isActive }"
       class="hamburger"
+      :class="{ collapse: isCollapse }"
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
       width="64"
@@ -20,6 +20,10 @@
     isActive: {
       type: Boolean,
       default: false
+    },
+    isCollapse: {
+      type: Boolean,
+      default: false
     }
   })
 
@@ -30,14 +34,25 @@
 </script>
 
 <style scoped>
-  .hamburger {
-    display: inline-block;
-    vertical-align: middle;
-    width: 20px;
-    height: 20px;
-  }
-
-  .hamburger.is-active {
-    transform: rotate(180deg);
+  .hamburger-container {
+    display: flex !important;
+    align-items: center !important;
+    line-height: 46px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    transition: background 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    padding: 0 15px;
+    .hamburger {
+      display: inline-block;
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+      transition: all 0.5s;
+    }
+    .collapse {
+      transform: rotate(180deg);
+    }
   }
 </style>

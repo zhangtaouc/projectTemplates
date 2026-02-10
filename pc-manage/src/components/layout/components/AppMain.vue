@@ -38,10 +38,10 @@
 
 <style lang="less" scoped>
   .app-main {
-    height: calc(100vh - 90px - 30px);
+    height: var(--app-height);
     width: 100%;
     position: relative;
-    background-color: #b6a9a9;
+    background-color: var(--bg-color);
     box-sizing: border-box;
   }
 

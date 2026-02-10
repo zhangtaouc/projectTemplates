@@ -1,7 +1,7 @@
 <template>
   <div :class="classObj" class="app-wrapper">
     <div
-      v-if="deviceType !== 'pc' && isCollapse"
+      v-if="deviceType !== 'pc' && !isCollapse"
       class="drawer-bg"
       @click="handleClickOutside"
     />
@@ -44,7 +44,7 @@
   }
 
   function handleClickOutside() {
-    store.isCollapse = false
+    store.isCollapse = !isCollapse.value
   }
 </script>
 

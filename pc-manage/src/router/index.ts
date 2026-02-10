@@ -33,7 +33,7 @@ const routes = [
         meta: { title: '首页' }
       },
       {
-        path: 'visitPage', // 使用相对路径
+        path: '/visitPage', // 使用相对路径
         name: 'VisitPage',
         component: () => import('@/views/visitPage/visitPage.vue'),
         meta: {

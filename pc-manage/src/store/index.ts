@@ -17,6 +17,43 @@ export const useStore = defineStore('common', () => {
   // 是否展示访问按钮
   const isSHowVisitBtn = ref(false)
   const deviceType: Ref<deviceType> = ref('pc')
+  const pageList = ref([
+    {
+      icon: 'miniprogram-icon',
+      meta: {
+        title: '小程序列表'
+      },
+      path: '/'
+    },
+    {
+      path: '',
+      icon: 'miniprogram-icon',
+      meta: {
+        title: '用户管理'
+      },
+      children: [
+        {
+          meta: {
+            title: '用户列表1'
+          },
+          path: '/visitPage'
+        },
+        {
+          meta: {
+            title: '用户列表2'
+          },
+          path: '/companyManage2'
+        }
+      ]
+    },
+    {
+      icon: 'miniprogram-icon',
+      meta: {
+        title: '任务管理'
+      },
+      path: '/404'
+    }
+  ])
 
   /**
    * 设置设备类型
@@ -41,6 +78,7 @@ export const useStore = defineStore('common', () => {
     token,
     nickName,
     deviceType,
-    setDeviceType
+    setDeviceType,
+    pageList
   }
 })

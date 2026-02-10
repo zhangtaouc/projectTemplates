@@ -1,59 +1,46 @@
 <template>
-  <div v-if="!item.hidden">
-    <template
-      v-if="
-        hasOneShowingChild(item.children, item) &&
-        (!onlyOneChild.children || onlyOneChild.noShowingChildren) &&
-        !item.alwaysShow
-      "
+  <template
+    v-if="
+      hasOneShowingChild(item.children, item) &&
+      (!onlyOneChild.children || onlyOneChild.noShowingChildren) &&
+      !item.alwaysShow
+    "
+  >
+    <app-link
+      v-if="onlyOneChild.meta"
+      :to="resolvePath(onlyOneChild.path, onlyOneChild.query)"
     >
-      <app-link
-        v-if="onlyOneChild.meta"
-        :to="resolvePath(onlyOneChild.path, onlyOneChild.query)"
+      <el-menu-item
+        :index="resolvePath(onlyOneChild.path, '')"
+        :class="{ 'submenu-title-noDropdown': !isNest }"
       >
-        <el-menu-item
-          :index="resolvePath(onlyOneChild.path, '')"
-          :class="{ 'submenu-title-noDropdown': !isNest }"
-        >
-          <svg-icon
-            v-if="item.menuType === 0"
-            :icon-class="item.icon || 'Application'"
-            class="selectMenu menu-icon"
-          />
-          <template #title>
-            <span
-              class="menu-title"
-              :title="hasTitle(onlyOneChild.meta.title)"
-              >{{ onlyOneChild.meta.title }}</span
-            >
-          </template>
-        </el-menu-item>
-      </app-link>
+        <img :src="getIcon(item.icon)" class="menu-icon" v-if="item.icon" />
+        <template #title>
+          <span class="menu-title" :title="hasTitle(onlyOneChild.meta.title)">{{
+            onlyOneChild.meta.title
+          }}</span>
+        </template>
+      </el-menu-item>
+    </app-link>
+  </template>
+
+  <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path, '')">
+    <template v-if="item.meta" #title>
+      <div class="selectMenu" />
+      <img :src="getIcon(item.icon)" class="menu-icon" v-if="item.icon" />
+      <span class="menu-title" :title="hasTitle(item.meta.title)">{{
+        item.meta.title
+      }}</span>
     </template>
 
-    <el-sub-menu
-      v-else
-      ref="subMenu"
-      :index="resolvePath(item.path, '')"
-      popper-append-to-body
-    >
-      <template v-if="item.meta" #title>
-        <div class="selectMenu" />
-        <span class="menu-title" :title="hasTitle(item.meta.title)">{{
-          item.meta.title
-        }}</span>
-      </template>
-
-      <sidebar-item
-        v-for="child in item.children"
-        :key="child.path"
-        :is-nest="true"
-        :item="child"
-        :base-path="resolvePath(child.path, '') as string"
-        class="nest-menu"
-      />
-    </el-sub-menu>
-  </div>
+    <sidebar-item
+      v-for="child in item.children"
+      :key="child.path"
+      :is-nest="true"
+      :item="child"
+      :base-path="resolvePath(child.path, '') as string"
+    />
+  </el-sub-menu>
 </template>
 
 <script setup lang="ts">
@@ -64,7 +51,6 @@
   import { getNormalPath } from '@/utils/ruoyi'
 
   const props = defineProps({
-    // route object
     item: {
       type: Object,
       required: true
@@ -150,49 +136,18 @@
       return ''
     }
   }
+
+  function getIcon(icon: string) {
+    return new URL(
+      `../../../../assets/images/home/${icon}.svg`,
+      import.meta.url
+    ).href
+  }
 </script>
 <style lang="less" scoped>
-  .el-sub-menu {
-    .selectMenu {
-      width: 12px;
-      height: 12px;
-      // background-image: url('@/assets/icons/svg/conmmonMenu.svg');
-      margin-right: 16px;
-      background-size: 100% 100%;
-    }
-
-    // &.is-active {
-    //   // .selectMenu {
-    //   //   // background-image: url('@/assets/icons/svg/selectMenu.svg');
-    //   // }
-    // }
-  }
-
-  @media screen {
-    .menu-icon {
-      width: 20px !important;
-      height: 20px !important;
-      margin-right: 20px !important;
-    }
-
-    .el-menu-tooltip__trigger {
-      padding: 0 !important;
-
-      .menu-icon {
-        margin-right: 0 !important;
-      }
-    }
-  }
-
-  :deep(.is-active) {
-    & > .menu-title {
-      font-weight: 600;
-      font-size: 16px;
-      color: #3f92f0 !important;
-    }
-  }
-
-  .submenu-title-noDropdown {
-    --el-menu-text-color: #9ba4b1;
+  .menu-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
   }
 </style>

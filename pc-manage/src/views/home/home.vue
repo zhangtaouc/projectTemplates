@@ -2,10 +2,9 @@
   <div class="home">
     <div class="home-container">
       <div class="home-content">
-        <div class="home-content-header">
-          <h1>Home</h1>
-        </div>
+        <div class="home-content-header">折叠：{{ isCollapse }}</div>
       </div>
     </div>
   </div>
 </template>
+<script lang="ts" src="./home.ts" />

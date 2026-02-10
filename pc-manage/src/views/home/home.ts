@@ -37,7 +37,7 @@ export default defineComponent({
   },
   setup() {
     const store = useStore()
-    const { isSHowVisitBtn } = storeToRefs(store)
+    const { isSHowVisitBtn, isCollapse } = storeToRefs(store)
     const isLoadedData = ref(false)
     const nickName = ref(store.nickName || localStorage.getItem('nickName'))
     const picker = reactive({
@@ -246,7 +246,8 @@ export default defineComponent({
       controlRegisterQrcode,
       isSHowVisitBtn,
       nickName,
-      loginOut
+      loginOut,
+      isCollapse
     }
   }
 })

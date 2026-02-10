@@ -32,7 +32,6 @@
     width: 100%;
     height: 80px;
     line-height: 80px;
-    // background: #2b2f3a;
     background: rgb(245, 246, 250);
     text-align: center;
     overflow: hidden;

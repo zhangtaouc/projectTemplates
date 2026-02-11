@@ -19,11 +19,11 @@ export const useStore = defineStore('common', () => {
   const deviceType: Ref<deviceType> = ref('pc')
   const pageList = ref([
     {
+      path: '/home',
       icon: 'miniprogram-icon',
       meta: {
         title: '小程序列表'
-      },
-      path: '/'
+      }
     },
     {
       path: '/',

@@ -21,9 +21,23 @@ const routes = [
     }
   },
 
-  // 带布局的路由
   {
-    path: '/',
+    path: '',
+    component: Layout,
+    redirect: '/home',
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: () => import('@/views/home/home.vue'),
+        meta: {
+          title: '首页'
+        }
+      }
+    ]
+  },
+  {
+    path: '',
     component: Layout,
     children: [
       {
@@ -33,12 +47,6 @@ const routes = [
         meta: {
           title: '测试1'
         }
-      },
-      {
-        path: '',
-        name: 'Home',
-        component: () => import('@/views/home/home.vue'),
-        meta: { title: '首页' }
       },
       {
         path: '/visitPage', // 使用相对路径

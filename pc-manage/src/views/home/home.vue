@@ -2,7 +2,7 @@
   <div class="home">
     <div class="home-container">
       <div class="home-content">
-        <div class="home-content-header">折叠：{{ isCollapse }}</div>
+        <div class="home-content-header">小程序列表：{{ isCollapse }}</div>
       </div>
     </div>
   </div>

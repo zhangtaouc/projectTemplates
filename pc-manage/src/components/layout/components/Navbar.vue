@@ -5,19 +5,9 @@
       :is-collapse="useStore().isCollapse"
       @toggle-click="toggleSideBar"
     />
-    <breadcrumb
-      v-if="false"
-      id="breadcrumb-container"
-      class="breadcrumb-container"
-    />
+    <breadcrumb />
 
     <div class="right-menu">
-      <el-dropdown trigger="click">
-        <img src="../../assets/images/language-icon.svg" class="change-lang" />
-        <template #dropdown>
-          <el-dropdown-menu> </el-dropdown-menu>
-        </template>
-      </el-dropdown>
       <div class="user-name">张涛</div>
       <div class="avatar-container">
         <el-dropdown
@@ -26,11 +16,7 @@
           @command="handleCommand"
         >
           <div class="avatar-wrapper">
-            <img
-              src="../../assets/images/login/avatar.png"
-              class="user-avatar"
-            />
-            <el-icon><caret-bottom /></el-icon>
+            <img src="@/assets/images/avatar.svg" class="user-avatar" />
           </div>
           <template #dropdown>
             <el-dropdown-menu>
@@ -73,23 +59,6 @@
     position: relative;
     background: var(--white-color);
 
-    .breadcrumb-container {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      float: left;
-    }
-
-    .topmenu-container {
-      position: absolute;
-      left: 50px;
-    }
-
-    .errLog-container {
-      display: inline-block;
-      vertical-align: top;
-    }
-
     .right-menu {
       float: right;
       height: 100%;
@@ -100,23 +69,10 @@
       &:focus {
         outline: none;
       }
-      .env {
-        font-size: 15px;
-        color: var(--main-color);
-        margin-right: 10px;
-        cursor: pointer;
-        font-weight: bold;
-      }
       .user-name {
         font-size: 15px;
-        color: #000;
+        color: var(--black-color);
         margin-right: 10px;
-        cursor: pointer;
-      }
-      .change-lang {
-        width: 32px;
-        height: 32px;
-        margin-right: 15px;
         cursor: pointer;
       }
 
@@ -125,7 +81,7 @@
         padding: 0 8px;
         height: 100%;
         font-size: 18px;
-        color: #5a5e66;
+        color: var(--gray-color);
         vertical-align: text-bottom;
 
         &.hover-effect {
@@ -133,7 +89,7 @@
           transition: background 0.3s;
 
           &:hover {
-            background: rgba(0, 0, 0, 0.025);
+            background: var(--black-color-20);
           }
         }
       }
@@ -149,9 +105,8 @@
 
           .user-avatar {
             cursor: pointer;
-            width: 36px;
-            height: 36px;
-            border-radius: 50px;
+            width: 32px;
+            border-radius: 50%;
           }
 
           i {
@@ -164,37 +119,9 @@
         }
       }
     }
-    :deep(.el-dialog__title) {
-      font-size: 16px;
-      // font-weight: 550;
-      font-weight: block;
-      color: #3a4366;
-    }
-    .el-form-item {
-      margin-bottom: 24px !important;
-      &.el-form-item__label {
-        font-size: 16px;
-      }
-    }
-    :deep(.el-dialog__body) {
-      padding: 14px 32px 32px 32px;
-    }
-  }
-  .el-dropdown-menu .edite-password {
-    font-size: 14px;
-    // font-weight: 400;
-    font-weight: normal;
-    color: #000;
-    text-align: center;
-    cursor: pointer;
-    padding: 5px 16px;
-    &:hover {
-      background-color: #ecf5ff;
-      color: #66b1ff;
-    }
   }
   // 下拉框颜色
   :deep(.el-dropdown-menu__item:not(.is-disabled):focus) {
-    background: #fff;
+    background: var(--white-color);
   }
 </style>

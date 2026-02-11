@@ -31,7 +31,7 @@ const routes = [
         name: 'home',
         component: () => import('@/views/home/home.vue'),
         meta: {
-          title: '首页'
+          title: '小程序列表'
         }
       }
     ]
@@ -45,7 +45,7 @@ const routes = [
         name: 'Test1',
         component: () => import('@/views/test1.vue'),
         meta: {
-          title: '测试1'
+          title: '任务管理'
         }
       },
       {
@@ -53,7 +53,7 @@ const routes = [
         name: 'VisitPage',
         component: () => import('@/views/visitPage/visitPage.vue'),
         meta: {
-          title: '信息录入'
+          title: '用户列表1'
         }
       },
       {
@@ -61,7 +61,7 @@ const routes = [
         name: 'Test2',
         component: () => import('@/views/test2.vue'),
         meta: {
-          title: '测试2'
+          title: '用户列表2'
         }
       }
     ]

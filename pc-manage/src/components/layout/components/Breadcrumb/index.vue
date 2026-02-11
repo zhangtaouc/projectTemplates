@@ -1,28 +1,26 @@
 <template>
-  <el-breadcrumb
-    v-if="levelList.length > 0"
-    class="app-breadcrumb"
-    separator="|"
-  >
-    <transition-group name="breadcrumb">
-      <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
-        <span
-          v-if="
-            item.redirect === 'noRedirect' || index !== levelList.length - 1
-          "
-          class="no-redirect"
-          >{{ item.meta.title }}</span
-        >
-        <span v-else class="breadcrumb-name">{{ item.meta.title }}</span>
-      </el-breadcrumb-item>
-      <el-breadcrumb-item key="menu" v-if="name">
-        <span class="breadcrumb-nenu"
-          >{{ name }}
-          <img @click="closeMenu" class="close" alt="" />
-        </span>
-      </el-breadcrumb-item>
-    </transition-group>
-  </el-breadcrumb>
+  <div class="breadcrumb-container">
+    <el-breadcrumb v-if="levelList.length > 0" class="app-breadcrumb">
+      <transition-group name="breadcrumb">
+        <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
+          <span
+            v-if="
+              item.redirect === 'noRedirect' || index !== levelList.length - 1
+            "
+            class="no-redirect"
+            >{{ item.meta.title }}</span
+          >
+          <span v-else class="breadcrumb-name">{{ item.meta.title }}</span>
+        </el-breadcrumb-item>
+        <el-breadcrumb-item key="menu" v-if="name">
+          <span class="breadcrumb-nenu"
+            >{{ name }}
+            <img @click="closeMenu" class="close" alt="" />
+          </span>
+        </el-breadcrumb-item>
+      </transition-group>
+    </el-breadcrumb>
+  </div>
 </template>
 
 <script setup name="Breadcrumb" lang="ts">
@@ -67,38 +65,45 @@
 </script>
 
 <style lang="less" scoped>
-  .app-breadcrumb.el-breadcrumb {
-    display: inline-block;
-    font-size: 14px;
-    line-height: 50px;
-    margin-left: 8px;
-
-    .no-redirect {
-      color: #97a8be;
-      font-size: 16px;
-      cursor: text;
-    }
-    .breadcrumb-name {
-      // font-weight: 400;
-      font-weight: normal;
-      font-size: 16px;
-      // color: #3a3f63;
-      color: #000;
-    }
-  }
-  .breadcrumb-nenu {
-    font-family:
-      PingFangSC,
-      PingFang SC;
-    font-weight: 400;
-    font-size: 16px;
-    color: rgba(0, 0, 0, 0.85);
-    cursor: pointer;
+  .breadcrumb-container {
     display: flex;
     align-items: center;
-    padding-bottom: 2px;
-    .close {
-      margin-left: 2px;
+    margin-left: 10px;
+    height: 100%;
+
+    .app-breadcrumb.el-breadcrumb {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 50px;
+      margin-left: 8px;
+
+      .no-redirect {
+        color: #97a8be;
+        font-size: 16px;
+        cursor: text;
+      }
+      .breadcrumb-name {
+        // font-weight: 400;
+        font-weight: normal;
+        font-size: 16px;
+        // color: #3a3f63;
+        color: #000;
+      }
+    }
+    .breadcrumb-nenu {
+      font-family:
+        PingFangSC,
+        PingFang SC;
+      font-weight: 400;
+      font-size: 16px;
+      color: rgba(0, 0, 0, 0.85);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding-bottom: 2px;
+      .close {
+        margin-left: 2px;
+      }
     }
   }
   :deep(.el-breadcrumb__separator) {

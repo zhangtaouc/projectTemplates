@@ -31,6 +31,7 @@
         // 进度完成后隐藏进度条
         setTimeout(() => {
           progressBar.value!.style.opacity = '0'
+          progressBarFill.value!.style.width = '0%'
         }, 500)
       }
       if (progressBarFill.value) {
@@ -57,7 +58,7 @@
 
     .progress-bar-fill {
       height: 100%;
-      background-color: var(--main-color-red);
+      background-color: var(--main-color);
       transition: width 0.2s ease;
     }
   }

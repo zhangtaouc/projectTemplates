@@ -42,7 +42,7 @@ export const useStore = defineStore('common', () => {
           meta: {
             title: '用户列表2'
           },
-          path: '/companyManage2'
+          path: '/test2'
         }
       ]
     },
@@ -51,7 +51,7 @@ export const useStore = defineStore('common', () => {
       meta: {
         title: '任务管理'
       },
-      path: '/visitPageq'
+      path: '/test1'
     }
   ])
 

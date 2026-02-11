@@ -27,6 +27,14 @@ const routes = [
     component: Layout,
     children: [
       {
+        path: '/test1', // 使用相对路径
+        name: 'Test1',
+        component: () => import('@/views/test1.vue'),
+        meta: {
+          title: '测试1'
+        }
+      },
+      {
         path: '',
         name: 'Home',
         component: () => import('@/views/home/home.vue'),
@@ -38,6 +46,14 @@ const routes = [
         component: () => import('@/views/visitPage/visitPage.vue'),
         meta: {
           title: '信息录入'
+        }
+      },
+      {
+        path: '/test2', // 使用相对路径
+        name: 'Test2',
+        component: () => import('@/views/test2.vue'),
+        meta: {
+          title: '测试2'
         }
       }
     ]

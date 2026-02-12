@@ -58,9 +58,12 @@
     overflow: hidden;
     position: relative;
     background: var(--white-color);
+    position: relative;
 
     .right-menu {
-      float: right;
+      position: absolute;
+      right: 0;
+      top: 0;
       height: 100%;
       line-height: 50px;
       display: flex;
@@ -95,7 +98,7 @@
       }
 
       .avatar-container {
-        margin-right: 40px;
+        margin-right: 16px;
         display: flex;
         align-items: center;
 

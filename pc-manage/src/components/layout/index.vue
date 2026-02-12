@@ -17,8 +17,7 @@
     >
       <div :class="{ 'fixed-header': false }">
         <navbar @set-layout="setLayout" />
-        <!-- <navTitle /> -->
-        <!-- <tags-view v-if="needTagsView" /> -->
+        <!-- <tags-view /> -->
       </div>
       <app-main />
     </div>

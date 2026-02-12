@@ -36,13 +36,13 @@ export const useStore = defineStore('common', () => {
           meta: {
             title: '用户列表1'
           },
-          path: '/visitPage'
+          path: 'visitPage'
         },
         {
           meta: {
             title: '用户列表2'
           },
-          path: '/test2'
+          path: 'test2'
         }
       ]
     },

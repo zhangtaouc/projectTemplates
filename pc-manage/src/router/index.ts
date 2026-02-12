@@ -20,36 +20,40 @@ const routes = [
       layout: false // 标记不需要布局
     }
   },
-
   {
-    path: '',
+    path: '/',
     component: Layout,
-    redirect: '/home',
+    meta: {
+      title: '首页'
+    },
     children: [
       {
-        path: '/home',
+        path: 'home',
         name: 'home',
         component: () => import('@/views/home/home.vue'),
         meta: {
           title: '小程序列表'
         }
-      }
-    ]
-  },
-  {
-    path: '',
-    component: Layout,
-    children: [
+      },
       {
-        path: '/test1', // 使用相对路径
+        path: 'test1',
         name: 'Test1',
         component: () => import('@/views/test1.vue'),
         meta: {
           title: '任务管理'
         }
-      },
+      }
+    ]
+  },
+  {
+    path: '/',
+    component: Layout,
+    meta: {
+      title: '用户管理'
+    },
+    children: [
       {
-        path: '/visitPage', // 使用相对路径
+        path: 'visitPage',
         name: 'VisitPage',
         component: () => import('@/views/visitPage/visitPage.vue'),
         meta: {
@@ -57,7 +61,7 @@ const routes = [
         }
       },
       {
-        path: '/test2', // 使用相对路径
+        path: 'test2',
         name: 'Test2',
         component: () => import('@/views/test2.vue'),
         meta: {
@@ -66,8 +70,6 @@ const routes = [
       }
     ]
   },
-
-  // 404 页面
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',

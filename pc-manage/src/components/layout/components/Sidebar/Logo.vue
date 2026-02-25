@@ -11,18 +11,24 @@
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
         <img src="@/assets/images/logo.svg" class="sidebar-logo" />
-        <div class="sidebar-title">弓长水寿科技</div>
+        <div class="sidebar-title">{{ baseTitle }}</div>
       </router-link>
     </transition>
   </div>
 </template>
 
 <script setup lang="ts" name="Logo">
+  import { computed } from 'vue'
+
   defineProps({
     collapse: {
       type: Boolean,
       required: true
     }
+  })
+
+  const baseTitle = computed(() => {
+    return import.meta.env.VITE_BASE_TITLE
   })
 </script>
 

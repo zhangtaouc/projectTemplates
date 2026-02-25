@@ -32,14 +32,16 @@
   --content-padding: 16px;
 
   // 项目样式
+  --header-bottom-height: 10px;
   --base-sidebar-width: 240px;
   --base-sidebar-width-hidden: -240px;
   --base-sidebar-width-collapse: 54px;
-  --tag-view-item-height: 28px;
+  --tag-view-item-height: 32px;
   --navbar-height: 72px;
   // 2px是tagview的边框
   --app-height: calc(
-    100vh - var(--navbar-height) - var(--tag-view-item-height) -2px
+    100vh - var(--navbar-height) - var(--tag-view-item-height) - 2px -
+      var(--header-bottom-height)
   );
 
   /**

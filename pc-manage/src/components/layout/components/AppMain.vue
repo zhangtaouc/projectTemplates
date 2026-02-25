@@ -42,6 +42,7 @@
     position: relative;
     background-color: var(--bg-color);
     box-sizing: border-box;
+    padding: var(--content-padding);
   }
 
   .fixed-header + .app-main {

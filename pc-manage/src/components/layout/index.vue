@@ -15,7 +15,7 @@
         'mobeil-container': deviceType !== 'pc'
       }"
     >
-      <div :class="{ 'fixed-header': false }">
+      <div class="header-container" :class="{ 'fixed-header': false }">
         <navbar @set-layout="setLayout" />
         <tags-view />
       </div>
@@ -91,6 +91,9 @@
     z-index: 9;
     width: calc(100% - 400px);
     transition: width 0.28s;
+  }
+  .header-container {
+    padding-bottom: var(--header-bottom-height);
   }
 
   .hideSidebar .fixed-header {

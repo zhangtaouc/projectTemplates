@@ -198,10 +198,11 @@
       align-items: center;
       height: var(--tag-view-item-height);
       padding: 0 12px;
-      margin: 0 4px;
+      margin-right: 12px;
       border-radius: 4px;
       background-color: var(--white-color);
       border: 1px solid var(--common-border-color);
+      border-bottom: none;
       color: var(--black-color-80);
       font-size: 13px;
       cursor: pointer;

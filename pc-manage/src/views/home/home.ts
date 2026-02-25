@@ -5,7 +5,7 @@ import {
   type StatusType
 } from '@/api'
 import router from '@/router'
-import { defineComponent, ref, reactive } from 'vue'
+import { defineComponent, ref, reactive, defineOptions } from 'vue'
 import showImage from '@/components/showImage/showImage.vue'
 import { ShowDialog, ShowToast } from '@/utils/showTips'
 import { useStore } from '@/store'
@@ -36,6 +36,9 @@ export default defineComponent({
     showImage
   },
   setup() {
+    defineOptions({
+      name: 'Home'
+    })
     const store = useStore()
     const { isSHowVisitBtn, isCollapse } = storeToRefs(store)
     const isLoadedData = ref(false)

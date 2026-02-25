@@ -9,7 +9,21 @@ declare module 'vue-router' {
   }
 }
 
-const routes = [
+export const routes = [
+  {
+    path: '/redirect',
+    component: Layout,
+    meta: {
+      hidden: true
+    },
+    // 当跳转到  /redirect/a/b/c/d?query=1
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/redirect/index.vue')
+      }
+    ]
+  },
   {
     path: '/login',
     name: 'Login',

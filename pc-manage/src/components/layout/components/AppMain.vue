@@ -6,7 +6,7 @@
       @scroll="handleScroll($event as any)"
     >
       <router-view v-slot="{ Component, route }">
-        <keep-alive :include="cachedViews">
+        <keep-alive :include="cacheViews">
           <component :is="Component" :key="route.fullPath" />
         </keep-alive>
       </router-view>
@@ -15,11 +15,10 @@
 </template>
 
 <script setup lang="ts">
+  import { useStore } from '@/store'
   import { computed, ref } from 'vue'
 
-  const cachedViews = computed(() => {
-    return ''
-  })
+  const cacheViews = computed(() => useStore().cacheViews)
 
   const hiddenScroll = ref(true)
   const handleScroll = (e: { target: { scrollTop: any } }) => {

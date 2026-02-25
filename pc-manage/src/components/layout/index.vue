@@ -17,7 +17,7 @@
     >
       <div :class="{ 'fixed-header': false }">
         <navbar @set-layout="setLayout" />
-        <!-- <tags-view /> -->
+        <tags-view />
       </div>
       <app-main />
     </div>

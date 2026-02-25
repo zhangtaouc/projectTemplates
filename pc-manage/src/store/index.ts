@@ -29,18 +29,21 @@ export const useStore = defineStore('common', () => {
       path: '/',
       icon: 'miniprogram-icon',
       meta: {
-        title: '用户管理'
+        title: '用户管理',
+        affix: true
       },
       children: [
         {
           meta: {
-            title: '用户列表1'
+            title: '用户列表1',
+            affix: true
           },
           path: 'visitPage'
         },
         {
           meta: {
-            title: '用户列表2'
+            title: '用户列表2',
+            affix: true
           },
           path: 'test2'
         }
@@ -49,7 +52,8 @@ export const useStore = defineStore('common', () => {
     {
       icon: 'miniprogram-icon',
       meta: {
-        title: '任务管理'
+        title: '任务管理',
+        affix: true
       },
       path: '/test1'
     }

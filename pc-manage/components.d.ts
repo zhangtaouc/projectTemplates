@@ -39,7 +39,7 @@ declare module 'vue' {
     ShowImage: typeof import('./src/components/showImage/showImage.vue')['default']
     Sidebar: typeof import('./src/components/layout/components/Sidebar/index.vue')['default']
     SidebarItem: typeof import('./src/components/layout/components/Sidebar/SidebarItem.vue')['default']
-    TagsView: typeof import('./src/components/layout/components/TagsView/index.vue')['default']
+    TagsView: typeof import('./src/components/layout/components/TagsView.vue')['default']
     VanButton: typeof import('vant/es')['Button']
     VanNavBar: typeof import('vant/es')['NavBar']
     VanOverlay: typeof import('vant/es')['Overlay']

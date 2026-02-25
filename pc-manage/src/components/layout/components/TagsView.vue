@@ -241,8 +241,8 @@
       }
 
       &.active {
-        background-color: var(--main-color);
-        border-color: var(--main-color);
+        background-color: var(--light-yellow-color);
+        border-color: var(--light-yellow-color);
         color: var(--white-color);
 
         .title {

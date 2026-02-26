@@ -37,11 +37,12 @@
   import SidebarItem from './SidebarItem.vue'
   import { useStore } from '@/store'
   import { storeToRefs } from 'pinia'
+  import { useRouterStore } from '@/store/routerStore'
   const store = useStore()
   const { isCollapse, deviceType } = storeToRefs(store)
   const xRoute = useRoute()
 
-  const sidebarRouters = computed(() => store.pageList)
+  const sidebarRouters = computed(() => useRouterStore().pageList)
   const showLogo = computed(() => true)
 
   const activeMenu = computed(() => {

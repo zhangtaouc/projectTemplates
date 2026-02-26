@@ -65,66 +65,78 @@
       right: 0;
       top: 0;
       height: 100%;
-      line-height: 50px;
       display: flex;
       align-items: center;
+      padding: 0 20px;
 
       &:focus {
         outline: none;
       }
+
       .user-name {
-        font-size: 15px;
-        color: var(--black-color);
-        margin-right: 10px;
+        font-size: var(--font-size-14);
+        color: var(--black-color-80);
+        margin-right: 8px;
         cursor: pointer;
-      }
+        font-weight: 500;
+        transition: color 0.3s ease;
 
-      .right-menu-item {
-        display: inline-block;
-        padding: 0 8px;
-        height: 100%;
-        font-size: 18px;
-        color: var(--gray-color);
-        vertical-align: text-bottom;
-
-        &.hover-effect {
-          cursor: pointer;
-          transition: background 0.3s;
-
-          &:hover {
-            background: var(--black-color-20);
-          }
+        &:hover {
+          color: var(--main-color);
         }
       }
 
       .avatar-container {
-        margin-right: 16px;
         display: flex;
         align-items: center;
 
+        .right-menu-item {
+          display: flex;
+          align-items: center;
+          height: 40px;
+          padding: 0 12px;
+          border-radius: 20px;
+          transition: all 0.3s ease;
+        }
+
         .avatar-wrapper {
-          margin-top: 5px;
           position: relative;
 
           .user-avatar {
             cursor: pointer;
-            width: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-          }
+            border: 2px solid var(--light-yellow-color);
+            transition: all 0.3s ease;
 
-          i {
-            cursor: pointer;
-            position: absolute;
-            right: -20px;
-            top: 25px;
-            font-size: 12px;
+            &:hover {
+              transform: scale(1.05);
+              box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+            }
           }
         }
       }
     }
-  }
-  // 下拉框颜色
-  :deep(.el-dropdown-menu__item:not(.is-disabled):focus) {
-    background: var(--white-color);
+
+    // 移动端适配
+    @media (max-width: 768px) {
+      .right-menu {
+        padding: 0 12px;
+
+        .user-name {
+          display: none;
+        }
+
+        .avatar-container {
+          .avatar-wrapper {
+            .user-avatar {
+              width: 32px;
+              height: 32px;
+            }
+          }
+        }
+      }
+    }
   }
 </style>

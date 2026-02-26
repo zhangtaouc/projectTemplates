@@ -24,6 +24,8 @@ declare module 'vue' {
     ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    Flotter: typeof import('./src/components/layout/components/Flotter.vue')['default']
+    Footer: typeof import('./src/components/layout/components/Footer.vue')['default']
     Hamburger: typeof import('./src/components/layout/components/Hamburger/index.vue')['default']
     InnerLink: typeof import('./src/components/layout/components/InnerLink/index.vue')['default']
     Layout: typeof import('./src/components/layout/index.vue')['default']

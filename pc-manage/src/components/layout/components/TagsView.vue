@@ -21,7 +21,9 @@
             <el-dropdown-menu>
               <!-- <el-dropdown-item command="all">关闭所有</el-dropdown-item> -->
               <el-dropdown-item command="other">关闭其他</el-dropdown-item>
-              <el-dropdown-item command="self" v-if="!tag.meta.affix"
+              <el-dropdown-item
+                command="self"
+                v-if="!tag.meta.affix && visitedViews.length > 1"
                 >关闭</el-dropdown-item
               >
               <el-dropdown-item command="refresh">刷新</el-dropdown-item>
@@ -32,6 +34,7 @@
           src="@/assets/images/delete-icon.svg"
           class="delete-icon"
           @click.prevent="closeSelectedTag(tag)"
+          v-if="visitedViews.length > 1"
         />
       </router-link>
     </el-scrollbar>

@@ -20,13 +20,14 @@
         <tags-view />
       </div>
       <app-main />
+      <Footer />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { AppMain, Navbar, Sidebar } from './components'
+  import { AppMain, Navbar, Sidebar, Footer } from './components'
   import { useStore } from '@/store'
   import { storeToRefs } from 'pinia'
   const store = useStore()

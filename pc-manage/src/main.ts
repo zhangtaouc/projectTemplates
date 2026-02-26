@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import './style/index.less'
+import './assets/style/index.less'
 import 'vant/lib/index.css'
 import 'element-plus/dist/index.css'
 import App from './App.vue'

@@ -3,22 +3,27 @@
  */
 .el-menu {
   border-right: none !important;
+
   // 一级菜单，有子菜单
   .el-sub-menu__title {
     height: var(--menu-item-height);
   }
+
   // 一级菜单下面有字菜单
   .el-sub-menu {
     .el-menu-item {
       height: var(--menu-sub-item-height);
+
       .menu-title {
         font-size: var(--font-size-14);
         margin-left: 8px;
       }
     }
+
     .el-sub-menu__title {
       font-size: var(--font-size-16);
       font-weight: 500;
+
       &:hover {
         background-color: transparent;
       }
@@ -28,10 +33,12 @@
   // 子菜单或没有子菜单的那个
   .el-menu-item {
     height: var(--menu-item-height);
+
     &:hover {
       background-color: var(--light-yellow-color) !important;
     }
   }
+
   // 菜单标题
   .menu-title {
     font-size: var(--font-size-16);
@@ -43,9 +50,39 @@
 .el-dropdown-menu {
   .el-dropdown-menu__item {
     color: var(--black-color-60);
+
     &:hover {
       background-color: var(--white-color) !important;
       color: var(--main-color) !important;
     }
+  }
+}
+
+// 表格
+.el-table {
+  thead {
+    color: var(--black-color-60) !important;
+
+    .cell {
+      text-align: center;
+    }
+  }
+
+  tr {
+    color: var(--black-color-80) !important;
+
+    td {
+      // 表格内容文字
+      .cell {
+        text-align: center;
+        color: var(--black-color-60) !important;
+      }
+    }
+
+    // 滑动的时候选中样式
+    // &:hover>td {
+    //   /* 自定义 hover 背景色，这里用浅蓝色示例 */
+    //   background-color: var(--little-yellow-color) !important;
+    // }
   }
 }

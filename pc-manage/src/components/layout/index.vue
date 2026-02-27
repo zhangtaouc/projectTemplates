@@ -94,7 +94,7 @@
     transition: width 0.28s;
   }
   .header-container {
-    padding-bottom: var(--header-bottom-height);
+    padding-bottom: var(--header-padding-bottom-height);
   }
 
   .hideSidebar .fixed-header {

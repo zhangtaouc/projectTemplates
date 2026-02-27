@@ -5,6 +5,7 @@
   --main-color: #d4af37;
   --light-yellow-color: #e6c766;
   --sub-yellow-color: #f9ecc4;
+  --little-yellow-color: #faf2d6;
   --light-yellow-shadow: rgba(230, 199, 102, 0.2);
   --black-color: rgba(0, 0, 0, 0.9);
   --black-color-80: rgba(0, 0, 0, 0.8);
@@ -29,21 +30,20 @@
 
   --border-radius-12: 12px;
   --border-radius-8: 8px;
+  --border-radius-16: 16px;
   --content-padding: 16px;
 
   // 项目尺寸
-  --header-bottom-height: 10px;
+  --header-padding-bottom-height: 1px;
   --base-sidebar-width: 240px;
   --base-sidebar-width-hidden: -240px;
   --base-sidebar-width-collapse: 54px;
-  --tag-view-item-height: 32px;
+  --tag-view-item-height: 30px;
   --navbar-height: 66px;
   --footer-height: 66px;
   // 显示内容尺寸，2px是tagview的边框
-  --app-height: calc(
-    100vh - var(--navbar-height) - var(--tag-view-item-height) - 2px -
-      var(--header-bottom-height) - var(--footer-height)
-  );
+  --app-height: calc(100vh - var(--navbar-height) - var(--tag-view-item-height) - 2px - var(--header-padding-bottom-height) - var(--footer-height));
+  --mini-page-height: calc(var(--app-height) - var(--content-padding) * 2);
 
   /**
    * element
@@ -51,6 +51,7 @@
   --menu-item-height: 64px;
   --menu-sub-item-height: 60px;
 }
+
 body {
   padding: 0;
   margin: 0;
